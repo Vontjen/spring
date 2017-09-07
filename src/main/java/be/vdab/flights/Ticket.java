@@ -2,24 +2,17 @@ package be.vdab.flights;
 
 public class Ticket {
 
-    int id;
-    double price;
-    Flight flight;
-    Passenger passenger;
+    private Integer id;
+    private double price;
+    private Flight flight;
+    private Passenger passenger;
 
-    public Ticket(int id, double price, Flight flight, Passenger passenger) {
-        this.id = id;
+    public Ticket(double price) {
         this.price = price;
-        this.flight = flight;
-        this.passenger = passenger;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public double getPrice() {

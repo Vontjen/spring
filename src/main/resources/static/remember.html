@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>remember</title>
+    <style type="text/css">
+        #mydiv {
+            height: 200px;
+            width: 400px;
+            border: 1px black solid;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+
+
+    <h1>Remember me?</h1>
+    <div id="mydiv"></div>
+    <script type="text/javascript">
+
+        if (!window.localStorage) {
+            window.alert("Niet ondersteunde browser");
+        } else {
+            var div = document.getElementById("mydiv");
+            if (localStorage.getItem("user")) {
+                var pastUserFirstName = JSON.parse(localStorage.getItem("user")).firstName;
+                var pastUserLastName = JSON.parse(localStorage.getItem("user")).lastName;
+                console.log(pastUserFirstName);
+                console.log(pastUserLastName);
+
+                div.innerHTML = "<h3>welcome back, " + pastUserFirstName + " " + pastUserLastName + "</h3>";
+            } else {
+                div.innerHTML = "<h3>unknown user</h3>"
+            }
+
+            document.addEventListener("submit", function (e) {
+                e.preventDefault();
+                var user = {
+                    firstName: document.getElementById("firstname").value,
+                    lastName: document.getElementById("lastname").value
+                };
+                localStorage.setItem("user", JSON.stringify(user));
+                div.innerHTML = "<h3>Dank je voor uw input, " + user.firstName + "</h3>";
+            })
+        }
+    </script>
+
+    <form id="form">
+        <input type="text" name="firstName" id="firstname" placeholder="First name here">
+        <input type="text" name="lastName" id="lastname" placeholder="Last name here">
+        <input type="submit" name="submit">
+    </form>
+
+
+</div>
+
+</body>
+</html>

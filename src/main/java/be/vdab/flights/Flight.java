@@ -2,20 +2,15 @@ package be.vdab.flights;
 
 public class Flight {
 
-    int id;
-    String number;
+    private Integer id;
+    private String number;
 
-    public Flight(int id, String number) {
-        this.id = id;
+    public Flight(String number) {
         this.number = number;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNumber() {
